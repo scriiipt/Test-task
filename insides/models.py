@@ -15,6 +15,7 @@ class Authors (models.Model):
     def __str__(self):
         return self.name
 
+
 class Books (models.Model):
     """ Книги """
     author = models.ForeignKey(Authors, on_delete=models.CASCADE)
@@ -27,3 +28,4 @@ class Books (models.Model):
     class Meta: 
         verbose_name = 'Книга'
         verbose_name_plural = 'Книги'
+        
