@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'insides.apps.InsidesConfig'
+    'insides',
 ]
 
 MIDDLEWARE = [
@@ -54,10 +54,12 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'solyanka.urls'
 
+
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'insides')],
+        'DIRS': [os.path.join(BASE_DIR, 'insides/templats/insides')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
