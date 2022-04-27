@@ -1,15 +1,19 @@
-from django.shortcuts import render
-from .models import Books, Authors
-from rest_framework import generics
-from . import serializers
 from django.contrib.auth.models import User
+from django.shortcuts import render
+from rest_framework import generics
+from django.http import HttpResponse
+from . import serializers
+from .models import Authors, Books
+
 # Create your views here.
 
 
 def index (request):
-    list = Books.objects.all()
-    return render(request, 'index.html', {'list':list})
+    list = Authors.objects.all()
+    return render(request, 'index.html', {'list': list})
 
+    # Количество запросов
+    
 
 #   Пользователи
 class UserList(generics.ListAPIView):
@@ -39,8 +43,10 @@ class BooksDetail(generics.RetrieveUpdateDestroyAPIView):
 class AuthorsList (generics.ListCreateAPIView):
     queryset = Authors.objects.all()
     serializer_class = serializers.AuthorsSerializer
+   
     
 class AuthorsDetail(generics.RetrieveAPIView):
     queryset = Authors.objects.all()
     serializer_class = serializers.AuthorsSerializer
+    
     

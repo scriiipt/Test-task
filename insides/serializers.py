@@ -9,18 +9,20 @@ class UserSerializer(serializers.ModelSerializer):
         fields = ['id', 'username']
         
 class BooksSerializer(serializers.ModelSerializer):
-    owner = serializers.ReadOnlyField(source='owner.username')
-
+    author = serializers.ReadOnlyField(source='author.name')
+    #author = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
+    
     class Meta:
         model = Books
-        fields = ['id','name', 'author', 'owner']
+        fields = ['id','name', 'author']
 
 
 class AuthorsSerializer(serializers.ModelSerializer):
-    books = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
-
+    #tags = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
+    
     class Meta:
         model = Authors
-        fields = ['id','name', 'books'] 
+        fields = ['name','id'] 
+        
         
                
